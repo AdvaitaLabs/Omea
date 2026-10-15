@@ -1,0 +1,63 @@
+[
+  {
+    "name": "AutoFragDiff",
+    "url": "https://github.com/keiserlab/autofragdiff.git",
+    "commit": "84f0885cb12e6ac4abc7558870f8d304c78c8a38"
+  },
+  {
+    "name": "DiffDec",
+    "url": "https://github.com/biomed-AI/DiffDec.git",
+    "commit": "916ae14207b2783a90336bb8509374535c5791f9"
+  },
+  {
+    "name": "DiffGui",
+    "url": "https://github.com/QiaoyuHu89/DiffGui.git",
+    "commit": "f2f90b560ad32db9d584a3b7b153420dc1e8d258"
+  },
+  {
+    "name": "MolCRAFT",
+    "url": "https://github.com/GenSI-THUAIR/MolCRAFT.git",
+    "commit": "743dfb5198c44ca0cec180822bd54258f9d386f1",
+    "patch": "patches/MolCRAFT.patch",
+    "patch_sha256": "8470bac38b72831e9528a3595a943b43f5699156cd299cccd5670c28c8c8291a"
+  },
+  {
+    "name": "NEAT-POCKET",
+    "url": "https://github.com/molinfo-vienna/NEAT-POCKET.git",
+    "commit": "ce7de3f23d28b99f5316903220d4bacfa2757463",
+    "patch": "patches/NEAT-POCKET.patch",
+    "patch_sha256": "e9902a3bad784ad1b8918f1890c394319d07b32f2476e278460e62958de6921b"
+  },
+  {
+    "name": "PocketXMol",
+    "url": "https://github.com/pengxingang/PocketXMol.git",
+    "commit": "65488cf635c856101dbe703ac97e2f10f58e005c",
+    "patch": "patches/PocketXMol.patch",
+    "patch_sha256": "6666128f8d29d35fe731c3322787abc3951994b74fd74de031275cdd56312a69"
+  },
+  {
+    "name": "flowr_root",
+    "url": "https://github.com/jule-c/flowr_root.git",
+    "commit": "739a33c2aab74d074dd24605b9a2e34dc809ae9c"
+  },
+  {
+    "name": "LDDM",
+    "url": "https://github.com/LPDI-EPFL/lddm.git",
+    "commit": "8fac7133c29ccdce576eb38bf7d43c09df9cb498"
+  },
+  {
+    "name": "PfizerCoupled",
+    "url": "https://github.com/pfizer-opensource/pilot-sbdd.git",
+    "commit": "5b7e668ea88baac175536d804599e59236b60afd"
+  },
+  {
+    "name": "DELETE",
+    "url": "https://github.com/OdinZhang/Delete.git",
+    "commit": "ba57693822ac82950bf0aa081b788772039373de"
+  },
+  {
+    "name": "DiffSBDD",
+    "url": "https://github.com/arneschneuing/DiffSBDD.git",
+    "commit": "5d0d38d16c8932a0339fd2ce3f67ade98bbdff27"
+  }
+]

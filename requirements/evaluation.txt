@@ -1,0 +1,9 @@
+# CPU preparation and common scoring
+numpy==2.3.2
+scipy==1.18.1
+rdkit==2026.3.6
+networkx==3.5
+biopython==1.88
+requests==2.31.0
+posebusters==0.6.5
+pandas==3.0.6

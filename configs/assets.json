@@ -1,0 +1,266 @@
+{
+  "AutoFragDiff": {
+    "required_files": [
+      {
+        "path": "checkpoints/autofragdiff_pocket-gvp.ckpt",
+        "sha256": "926dd871aa48879e4b77b378e42a5089d5f6803451807f1064704e69e05f9dd9"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "checkpoints/autofragdiff_pocket-gvp.ckpt",
+        "sha256": "926dd871aa48879e4b77b378e42a5089d5f6803451807f1064704e69e05f9dd9",
+        "url": "https://drive.usercontent.google.com/download?id=19ynSBGDoYtI5el0INzn45b_14fp2nuyf&export=download&confirm=t"
+      }
+    ],
+    "weight_license": "no separate checkpoint terms located",
+    "license_source": "https://github.com/keiserlab/autofragdiff#sampling"
+  },
+  "DiffDec": {
+    "required_files": [
+      {
+        "path": "checkpoints/diffdec_single.ckpt",
+        "sha256": "59776b4049ff6bcc068ae0a551a1271a48f164ff8b7bec6e6f8d6846c635129b"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "checkpoints/diffdec_single.ckpt",
+        "sha256": "59776b4049ff6bcc068ae0a551a1271a48f164ff8b7bec6e6f8d6846c635129b",
+        "url": "https://zenodo.org/records/10527451/files/diffdec_single.ckpt?download=1"
+      }
+    ],
+    "weight_license": "CC-BY-4.0",
+    "license_source": "https://zenodo.org/records/10527451"
+  },
+  "DiffSBDD": {
+    "required_files": [
+      {
+        "path": "checkpoints/moad_fullatom_cond.ckpt",
+        "sha256": "58bd5f6c532e64a727f92779c6d3d7f274e5df7b0d345e4900a99dd341192561"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "checkpoints/moad_fullatom_cond.ckpt",
+        "sha256": "58bd5f6c532e64a727f92779c6d3d7f274e5df7b0d345e4900a99dd341192561",
+        "url": "https://zenodo.org/records/8183747/files/moad_fullatom_cond.ckpt?download=1"
+      }
+    ],
+    "weight_license": "CC-BY-4.0",
+    "license_source": "https://zenodo.org/records/8183747"
+  },
+  "DELETE-singlepath": {
+    "required_files": [
+      {
+        "path": "checkpoints/delete.pt",
+        "sha256": "a0d26e0b75266ee8bb9cc873ab09d1a4c9078832928b274e673be9c75841e8cc"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "checkpoints/delete.pt",
+        "sha256": "a0d26e0b75266ee8bb9cc873ab09d1a4c9078832928b274e673be9c75841e8cc",
+        "url": "https://zenodo.org/records/7985201/files/delete.pt?download=1"
+      }
+    ],
+    "weight_license": "CC-BY-4.0",
+    "license_source": "https://zenodo.org/records/7985201"
+  },
+  "MolJO-maskfix": {
+    "required_files": [
+      {
+        "path": "checkpoints/moljo_backbone.ckpt",
+        "sha256": "0a54f9bfb847ea87e7aec538df90a009c8c49d12a7b5d09947d04b7f9444e024"
+      },
+      {
+        "path": "checkpoints/moljo_affinity9.ckpt",
+        "sha256": "d0de1d39bd8a8f2eee0c5971d65e3b1c6ac5d6ca67013ec86fb061309449ef30"
+      },
+      {
+        "path": "checkpoints/moljo_sa9.ckpt",
+        "sha256": "bae3b18b4ba55faf02577b94e8b11fc2ffe129fb4b0e2e1fa9c80b666b26b4af"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "checkpoints/moljo_backbone.ckpt",
+        "sha256": "0a54f9bfb847ea87e7aec538df90a009c8c49d12a7b5d09947d04b7f9444e024",
+        "url": "https://drive.usercontent.google.com/download?id=1TcUQM7Lw1klH2wOVBu20cTsvBTcC1WKu&export=download&confirm=t"
+      },
+      {
+        "path": "checkpoints/moljo_affinity9.ckpt",
+        "sha256": "d0de1d39bd8a8f2eee0c5971d65e3b1c6ac5d6ca67013ec86fb061309449ef30",
+        "url": "https://huggingface.co/GenSI/MolJO/resolve/main/affinity9.ckpt"
+      },
+      {
+        "path": "checkpoints/moljo_sa9.ckpt",
+        "sha256": "bae3b18b4ba55faf02577b94e8b11fc2ffe129fb4b0e2e1fa9c80b666b26b4af",
+        "url": "https://huggingface.co/GenSI/MolJO/resolve/main/sa9.ckpt"
+      }
+    ],
+    "weight_license": "predictors: CC-BY-NC-SA-2.0; backbone: separate terms not located",
+    "license_source": "https://huggingface.co/GenSI/MolJO"
+  },
+  "MolPilot-inpaint": {
+    "required_files": [
+      {
+        "path": "checkpoints/molpilot.ckpt",
+        "sha256": "2d0970d2a5e680e2fe53693b25ed8b6a0f07663e8948592522ab2d6f979f9c38"
+      },
+      {
+        "path": "checkpoints/molpilot_schedule.pt",
+        "sha256": "984dffedfcadd978d0e631aa9727ff00831d1863442f4596ba5269844fcca98b"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "checkpoints/molpilot.ckpt",
+        "sha256": "2d0970d2a5e680e2fe53693b25ed8b6a0f07663e8948592522ab2d6f979f9c38",
+        "url": "https://huggingface.co/GenSI/MolPilot/resolve/main/molpilot_epoch26-val_loss5.42-mol_stable0.48-complete0.83.ckpt"
+      },
+      {
+        "path": "checkpoints/molpilot_schedule.pt",
+        "sha256": "984dffedfcadd978d0e631aa9727ff00831d1863442f4596ba5269844fcca98b",
+        "url": "https://huggingface.co/GenSI/MolPilot/resolve/main/optimized_path_rect_closest.pt"
+      }
+    ],
+    "weight_license": "CC-BY-NC-SA-2.0",
+    "license_source": "https://huggingface.co/GenSI/MolPilot"
+  },
+  "DiffGui-maskfix": {
+    "required_files": [
+      {
+        "path": "checkpoints/diffgui_trained.pt",
+        "sha256": "d092f3bc778d12032b871f9076bf252d2d1804fb9bcd28c46268493818f8707d"
+      },
+      {
+        "path": "checkpoints/diffgui_bond_trained.pt",
+        "sha256": "0f1593dc5faf22bdd86247f615ac0a1c9159e00c1f9cf6f3b30933dbbd5277f6"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "checkpoints/diffgui_trained.pt",
+        "sha256": "d092f3bc778d12032b871f9076bf252d2d1804fb9bcd28c46268493818f8707d",
+        "url": "https://drive.usercontent.google.com/download?id=1KmGZTVGvA3LN22ph1_7bDgmrvr4MrozH&export=download&confirm=t"
+      },
+      {
+        "path": "checkpoints/diffgui_bond_trained.pt",
+        "sha256": "0f1593dc5faf22bdd86247f615ac0a1c9159e00c1f9cf6f3b30933dbbd5277f6",
+        "url": "https://drive.usercontent.google.com/download?id=1Rkr-K-gvLdTrRFkwBhIf8q5R4GXJHOAn&export=download&confirm=t"
+      }
+    ],
+    "weight_license": "no separate checkpoint terms located",
+    "license_source": "https://github.com/QiaoyuHu89/DiffGui#trained-model-checkpoint"
+  },
+  "PocketXMol": {
+    "required_files": [
+      {
+        "path": "checkpoints/pocketxmol/data/trained_models/pxm/checkpoints/pocketxmol.ckpt",
+        "sha256": "76d918122e598a3c53c77727898659f059d217e680834b7d223b0205c2715c3a"
+      },
+      {
+        "path": "checkpoints/pocketxmol/data/trained_models/pxm/train_config/train.yml",
+        "sha256": "7225ef261d7bf20afeec6b41760a7dda8608110a37cb3361395ab49c49a0963d"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "checkpoints/model_weights.tar.gz",
+        "sha256": "e40bc684ef1ffff1e0da8495e65ce96861fa956536d7a6e5a54a98d20a39581e",
+        "url": "https://zenodo.org/records/17801271/files/model_weights.tar.gz?download=1"
+      }
+    ],
+    "weight_license": "CC-BY-4.0",
+    "license_source": "https://zenodo.org/records/17801271",
+    "installer": "pocketxmol_tar"
+  },
+  "Pfizer-Coupled-flow": {
+    "required_files": [
+      {
+        "path": "checkpoints/pfizer/ckpts/kinodata3d/flow/cutable/best_valid.ckpt",
+        "sha256": "446b69980e4e04e4bf67293ee70e52a49b285625a8e0317f8acd11a56184b56e"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "downloads/pfizer_ckpts.zip",
+        "sha256": "b139bfa984a1494982b4175a4a45f39527a87c89b1212bd6d52ccad838141f79",
+        "url": "https://api.figshare.com/v2/file/download/59948612"
+      }
+    ],
+    "weight_license": "CC-BY-4.0",
+    "license_source": "https://figshare.com/articles/dataset/Checkpoints_to_lightning_model/30739268",
+    "installer": "pfizer_zip"
+  },
+  "Pfizer-Coupled-diffusion": {
+    "required_files": [
+      {
+        "path": "checkpoints/pfizer/ckpts/kinodata3d/diffusion/cutable/best_valid.ckpt",
+        "sha256": "2cfab1581946569fff76cd1ddec3aec1cac3ed5e34dd0bb401a22bd10da14ff4"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "downloads/pfizer_ckpts.zip",
+        "sha256": "b139bfa984a1494982b4175a4a45f39527a87c89b1212bd6d52ccad838141f79",
+        "url": "https://api.figshare.com/v2/file/download/59948612"
+      }
+    ],
+    "weight_license": "CC-BY-4.0",
+    "license_source": "https://figshare.com/articles/dataset/Checkpoints_to_lightning_model/30739268",
+    "installer": "pfizer_zip"
+  },
+  "FLOWR.root": {
+    "required_files": [
+      {
+        "path": "checkpoints/flowr_root_v2.2.ckpt",
+        "sha256": "b818f41dc12ffb6bc558bb0ad997055581e07cd9e49dcac1b794ed9993c46e4c"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "checkpoints/flowr_root_v2.2.ckpt",
+        "sha256": "b818f41dc12ffb6bc558bb0ad997055581e07cd9e49dcac1b794ed9993c46e4c",
+        "url": "https://drive.usercontent.google.com/download?id=1-H8-oTG_NucqBCfP02MRGeLSxL1HYrDL&export=download&confirm=t"
+      }
+    ],
+    "weight_license": "no separate checkpoint terms located",
+    "license_source": "https://github.com/jule-c/flowr_root#checkpoints"
+  },
+  "NEAT-POCKET": {
+    "required_files": [
+      {
+        "path": "checkpoints/neat_pocket/trained_models/neat_spindr/checkpoints/periodic-epoch=4999.ckpt",
+        "sha256": "e34c59a0b342d2d0abed9f0435c8594fb0ff06df5e4355ce82bf162d6752bd7a"
+      },
+      {
+        "path": "checkpoints/neat_pocket/trained_models/bond_predictor/bp_spindr/checkpoints/bond_predictor_SPINDR-epoch=17.ckpt",
+        "sha256": "9d3337f284cbd377ba11d08c86b97b44cb1beef70a90ca0e843fb13d85a84a94"
+      }
+    ],
+    "downloads": [],
+    "weight_license": "MIT",
+    "license_source": "https://figshare.com/articles/online_resource/NEAT-POCKET_Pocket-Conditioned_Autoregressive_3D_Molecular_Generation_with_a_Neighborhood-Guided_Set_Transformer/33426877",
+    "installer": "neat_ranges",
+    "archive_url": "https://api.figshare.com/v2/file/download/68203198"
+  },
+  "LDDM": {
+    "required_files": [
+      {
+        "path": "checkpoints/lddm.ckpt",
+        "sha256": "b391f1df9aae8bffd9b722a679247da06ae624c97d2432852ee34983cb28d46a"
+      }
+    ],
+    "downloads": [
+      {
+        "path": "checkpoints/lddm.ckpt",
+        "sha256": "b391f1df9aae8bffd9b722a679247da06ae624c97d2432852ee34983cb28d46a",
+        "url": "https://zenodo.org/api/records/22754501/files/lddm.ckpt/content"
+      }
+    ],
+    "weight_license": "CC-BY-NC-4.0",
+    "license_source": "https://github.com/LPDI-EPFL/lddm#checkpoint-geometry-reference"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "created_utc": "2026-10-14T17:37:57.335747+00:00",
+  "scope": "software release verification, not a fresh full benchmark",
+  "unit_tests_passed": 9,
+  "reference_controls_passed": 45,
+  "wrong_anchor_controls_rejected": 45,
+  "shifted_core_controls_rejected": 45,
+  "prepared_frozen_cohort": {
+    "cases": 45,
+    "primary_cases": 30,
+    "primary_target_groups": 7
+  },
+  "checkpoint_and_auxiliary_SHA256_verified": {
+    "models": 13,
+    "files": 19
+  },
+  "upstream_patch_application_verified": [
+    "MolCRAFT",
+    "PocketXMol",
+    "NEAT-POCKET",
+    "AutoFragDiff"
+  ],
+  "autofragdiff_native_GPU_smoke": {
+    "attempts": 2,
+    "strict_outputs": 2,
+    "completed": true,
+    "included_in_formal_benchmark": false
+  },
+  "shared_CPU_scoring_smoke": {
+    "reference_jobs": 1,
+    "candidate_jobs": 2,
+    "successful_scoring_jobs": 3,
+    "completed": true,
+    "cache_repeat_verified": true,
+    "geometry_missing_checks_count_as_failure": true,
+    "summary_completed": true
+  },
+  "pfizer_diffusion_exit_mask_native_CPU_check": {
+    "passed": true,
+    "mask_calls": 1,
+    "forbidden": 344,
+    "marked": 344,
+    "software_steps": 4,
+    "device": "cpu",
+    "benchmark_results": false
+  },
+  "core_audit_and_normalization_semantics_unchanged": true,
+  "shared_H_preparation_and_gnina_score_function_semantics_unchanged": true,
+  "all_13_models_full_GPU_generation_re_run": false,
+  "all_environments_fresh_install_verified": false
+}

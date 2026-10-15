@@ -1,0 +1,44 @@
+diff --git a/MolJO/core/evaluation/utils/sascorer.py b/MolJO/core/evaluation/utils/sascorer.py
+index eb9acb8..57d700b 100644
+--- a/MolJO/core/evaluation/utils/sascorer.py
++++ b/MolJO/core/evaluation/utils/sascorer.py
+@@ -19,8 +19,8 @@ from __future__ import print_function
+ 
+ from rdkit import Chem
+ from rdkit.Chem import rdMolDescriptors
+-from rdkit.six.moves import cPickle
+-from rdkit.six import iteritems
++from six.moves import cPickle
++from six import iteritems
+ 
+ import math
+ from collections import defaultdict
+diff --git a/MolJO/core/models/bfn4sbdd.py b/MolJO/core/models/bfn4sbdd.py
+index 891c216..826e176 100644
+--- a/MolJO/core/models/bfn4sbdd.py
++++ b/MolJO/core/models/bfn4sbdd.py
+@@ -795,10 +795,12 @@ class BFN4SBDDScoreModel(BFNBase):
+                     # mu_coord_gt = torch.where(ligand_pos == 0, mu_pos_t, ligand_pos)
+                     ligand_pos_mask = ligand_mask.unsqueeze(-1).expand_as(ligand_pos)
+                     mu_pos_t_interpolate = EPS * mu_coord_gt + (1 - EPS) * mu_pos_t
+-                    mu_pos_t_interpolate[~ligand_mask] = 0
++                    if not getattr(self, 'preserve_unmasked_state', False):
++                        mu_pos_t_interpolate[~ligand_mask] = 0
+                     # assert mask correctly
+                     # i.e. mu_pos_t_interpolate should be zero where ligand_pos is zero
+-                    assert torch.allclose(mu_pos_t_interpolate[~ligand_mask], torch.zeros_like(mu_pos_t_interpolate[~ligand_mask])), "mu_pos_t_interpolate is not zero where ligand_pos is zero"
++                    if not getattr(self, 'preserve_unmasked_state', False):
++                        assert torch.allclose(mu_pos_t_interpolate[~ligand_mask], torch.zeros_like(mu_pos_t_interpolate[~ligand_mask])), 'Expected native zeroed free state'
+ 
+                     # if i >= sample_steps // 3:
+                     # if self.sampling_strategy == "vanilla_back_130" and i >= sample_steps * 2 // 3:
+@@ -1457,7 +1459,8 @@ class BFN4SBDDScoreModel(BFNBase):
+             mu_coord_gt = ligand_pos
+             theta_h_gt = ligand_v
+             mu_pos_t_interpolate = EPS * mu_coord_gt + (1 - EPS) * mu_pos_t
+-            mu_pos_t_interpolate = torch.where(ligand_pos_mask, mu_pos_t_interpolate, torch.zeros_like(ligand_pos))
++            if not getattr(self, 'preserve_unmasked_state', False):
++                mu_pos_t_interpolate = torch.where(ligand_pos_mask, mu_pos_t_interpolate, torch.zeros_like(ligand_pos))
+             
+             # directly replace the ligand position with the ground truth
+             mu_pos_t = torch.where(ligand_pos_mask, ligand_pos, mu_pos_t_interpolate)

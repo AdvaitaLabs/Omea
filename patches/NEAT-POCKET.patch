@@ -1,0 +1,20 @@
+diff --git a/src/neat/utils/posecheck_metrics.py b/src/neat/utils/posecheck_metrics.py
+index 2d7ae0a..edfcf24 100644
+--- a/src/neat/utils/posecheck_metrics.py
++++ b/src/neat/utils/posecheck_metrics.py
+@@ -1,12 +1,13 @@
+ import numpy as np
+-from posecheck import PoseCheck
+-from posecheck.utils.chem import remove_radicals
+ from rdkit.Chem import Mol
+ 
+ 
+ def compute_posecheck_metrics_from_mols(
+     mols: list[Mol], pocket_path: str, compute_strain: bool = False
+ ) -> dict[str, float]:
++    # Optional evaluation dependency: inference uses the benchmark's judges.
++    from posecheck import PoseCheck
++    from posecheck.utils.chem import remove_radicals
+     # Initialize the PoseCheck object
+     pc = PoseCheck()
+ 

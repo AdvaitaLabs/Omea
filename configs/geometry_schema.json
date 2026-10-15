@@ -1,0 +1,28 @@
+{
+  "configuration": "dock",
+  "required_checks": [
+    "all_atoms_connected",
+    "aromatic_ring_flatness",
+    "bond_angles",
+    "bond_lengths",
+    "double_bond_flatness",
+    "inchi_convertible",
+    "internal_energy",
+    "internal_steric_clash",
+    "minimum_distance_to_inorganic_cofactors",
+    "minimum_distance_to_organic_cofactors",
+    "minimum_distance_to_protein",
+    "minimum_distance_to_waters",
+    "mol_cond_loaded",
+    "mol_pred_loaded",
+    "no_radicals",
+    "non-aromatic_ring_non-flatness",
+    "protein-ligand_maximum_distance",
+    "sanitization",
+    "volume_overlap_with_inorganic_cofactors",
+    "volume_overlap_with_organic_cofactors",
+    "volume_overlap_with_protein",
+    "volume_overlap_with_waters"
+  ],
+  "missing_check_policy": "fail_complete_geometry; retain raw attempt; record missing checks separately"
+}
