@@ -24,3 +24,7 @@ Model weights, GNINA binaries, DELETE surface tools, public structures and compl
 Upstream files contain their own copyright notices, preserved verbatim in licenses/. Local changes are described in docs/methods.md and CHANGELOG.md; all source revisions and patch checksums are in configs/sources.json. The MolCRAFT patch includes a path compatibility change to its SA scorer, which has its own GPLv2 attribution. Reconstruction implementations called from AutoFragDiff, DiffGui and MolJO also carry GPLv2 notices; they remain in external source checkouts rather than being copied into this repository.
 
 The MOAD test identifiers originate from the fixed MIT-licensed DiffSBDD repository. The 45-case single-site manifest and target-group annotations are benchmark-derived metadata; molecular coordinate files are fetched separately. No general commercial-use claim is made for the collection of optional models and assets.
+
+## CNN guidance experiment sources
+
+The AutoFragDiff sampling hooks in `guidance/scripts/` call the fixed AutoFragDiff source and reconstruction implementation; the existing AutoFragDiff and reconstruction notices above continue to apply. CNN differentiation uses [RMeli/gnina-torch](https://github.com/RMeli/gnina-torch) at the revision in `configs/guidance_sources.json`; its [MIT notice](licenses/gnina-torch-guidance-LICENSE.txt) is preserved. AutoFragDiff and gnina-torch source checkouts, CNN weights, libmolgrid, and the GNINA executable remain external dependencies and are not bundled in this release.

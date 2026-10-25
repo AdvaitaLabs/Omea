@@ -4,6 +4,8 @@
 
 本任务参考 DiffSBDD 的骨架保持设计思路，是严格单连接位点的扩展任务。它不是论文原始实验的逐项复现，也不把代理分数当作真实 ΔΔG。
 
+同时收录 AutoFragDiff 的 CNN 坐标与元素联合引导、局部几何约束和坐标更新投影，实现范围截至 2026-10-25 周报所用的原生最终重建版本。
+
 ## 测试设置
 
 - 固定 45 个案例，每个案例每个方法 **100 次原始生成**。案例是蛋白结构、原配体和一个指定替换位点的组合。
@@ -28,11 +30,25 @@
 
 同时报告每个案例及靶标等权结果，避免一个靶标的案例多就主导总分。Vina 和 GNINA 是快速代理，不能直接解释成实验亲和力改善或自由能 ΔΔG。本仓库不运行 OpenFE。
 
+## AutoFragDiff 引导优化
+
+生成时只使用 GNINA CNNaffinity 引导坐标和元素特征，末期加入局部几何约束。Vina 在方案冻结后用于评估，不参与这一轮的引导或方案选择。每组使用相同的 30 个案例、每案例 100 次尝试，失败保留在分母中。
+
+| 方案 | 双指标改善次数 | 双指标改善率 |
+|---|---:|---:|
+| 不使用评分引导 | 360 / 3000 | 12.00% |
+| 评分引导加局部几何约束 | 492 / 3000 | 16.40% |
+| 加强局部几何约束 | 494 / 3000 | 16.47% |
+| 限制使局部几何变差的坐标更新 | 495 / 3000 | **16.50%** |
+
+这些是原开发集实验的已核算结果，不是通过本发布目录重新运行得到的独立测试成绩。最终输出仍使用原生重建；后续的最终核心保持实验不在本版范围内。主要实现、参数及运行依赖见 [引导优化说明](docs/guidance.md)，来源核对见 [验收摘要](docs/guidance_validation.json)。
+
 ## 目录
 
 ```text
 benchmark.py       统一命令入口
 scripts/           数据准备、13 个方法的适配器、生成、评分和汇总
+guidance/          CNN 联合引导、局部几何约束及周报版本的实验脚本
 configs/           测试规则、方法信息、官方资源及权重 SHA256
 cohorts/           固定测试案例与官方 MOAD split
 requirements/      依赖文件与实际运行环境的版本记录
@@ -42,7 +58,7 @@ tests/             核心约束、固定预算、保存和评测规则的检查
 docs/              安装、方法适配说明和已知问题
 ```
 
-蛋白结构、权重、第三方完整仓库、生成结果、历史调参和联合引导实验没有放入发布目录。运行时下载的资源及输出由 `.gitignore` 排除。
+蛋白结构、权重、第三方完整仓库及逐次生成结果没有放入发布目录。引导部分保留对应版本的代码、参数和统计摘要；运行时下载的资源及输出由 `.gitignore` 排除。
 
 ## 使用
 
@@ -72,7 +88,7 @@ python benchmark.py summarize --run benchmark_v1 --models AutoFragDiff
 
 如果已有权重，可按 `configs/assets.json` 的路径放好，再运行 `assets verify --model ...`。如果已有完整 MOAD/CCD 缓存，用 `prepare --from-cache`；已有任务池用 `prepare --freeze-only`。
 
-默认资源和输出放在本仓库目录。也可设置 `RGROUP_BENCHMARK_ROOT=/path/to/workspace`，把数据、上游源码、工具、权重和结果放在独立工作目录；命令入口可以从任意工作目录执行。任务清单内部的相对路径以该工作目录为根。
+上述 `benchmark.py` 命令默认把资源和输出放在本仓库目录。也可设置 `RGROUP_BENCHMARK_ROOT=/path/to/workspace`，把数据、上游源码、工具、权重和结果放在独立工作目录；命令入口可以从任意工作目录执行。任务清单内部的相对路径以该工作目录为根。引导实验脚本沿用原实验路径，不读取这个环境变量，准备方式见 [引导优化说明](docs/guidance.md)。
 
 小规模安装检查必须显式标记，不能并入正式结果：
 
@@ -90,6 +106,6 @@ python benchmark.py summarize --run smoke_v1 --models AutoFragDiff --smoke
 
 模型、文章、许可证和适配说明见 [docs/methods.md](docs/methods.md)。MolJO、DiffGui、MolPilot 和 DELETE 的实际适配形式会在配置与输出中保留标识，不作为未经修改的原生采样器宣传。
 
-这份整理采用新的输出布局，且修正了发布代码中已定位的 Pfizer diffusion 掩码绑定问题。历史表格没有随代码重新计算，也没有放进本仓库。已有结果不能直接混入这里的新运行；说明见 [docs/known_issues.md](docs/known_issues.md)。
+13 模型 benchmark 采用新的输出布局，且修正了发布代码中已定位的 Pfizer diffusion 掩码绑定问题；对应历史表格没有随代码重新计算或发布。新增的引导结果仅作为其原实验的统计摘要保存，不能与这里的新运行合并核算；说明见 [docs/known_issues.md](docs/known_issues.md)。
 
 许可按文件范围区分：独立的 benchmark 调度、数据准备和评测代码使用 MIT；上游适配与补丁保留对应许可证，特别是 MolJO/MolPilot 的非商业限制。权重许可独立于源码许可，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

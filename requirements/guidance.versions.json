@@ -1,0 +1,18 @@
+{
+  "torch": "2.8.0+cu128",
+  "rdkit": "2026.3.6",
+  "numpy": "1.26.4",
+  "scipy": "1.16.3",
+  "networkx": "3.5",
+  "biopython": "1.88",
+  "openbabel-wheel": "3.1.1.23",
+  "posebusters": "0.6.5",
+  "molgrid": "0.5.5",
+  "pytorch-lightning": "2.6.6",
+  "torch-geometric": "2.6.1",
+  "torch-scatter": "2.1.2+pt28cu128",
+  "torch-cluster": "1.6.3+pt28cu128",
+  "e3nn": "0.6.0",
+  "wandb": "0.30.0",
+  "PyYAML": "6.0.2"
+}

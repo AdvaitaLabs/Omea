@@ -1,0 +1,174 @@
+{
+  "source_run": "cnn_geometry_followup_scale30_v1",
+  "completed_utc": "2026-10-24T23:45:44.753293+00:00",
+  "scope": "原实验验收与周报统计的摘要；不是本次导出重新生成的结果。",
+  "audit": {
+    "passed": true,
+    "cases": 30,
+    "target_groups": 7,
+    "attempts_per_case": 100,
+    "new_outputs": 6000,
+    "reused_outputs": 6000,
+    "total_outputs": 12000,
+    "core_fixed": true,
+    "paired_seeds_and_all_noise": true,
+    "native_final_reconstruction": true,
+    "gradient_events_verified": 3000000,
+    "guidance_batch_steps_verified": 1500000,
+    "committed_batches_verified": 3000,
+    "all_failures_retained": true,
+    "reused_controls_unchanged": true,
+    "accounting_cross_checked": true,
+    "guidance_and_selector_exclude_external_score": true,
+    "external_evaluation_unblinded": true,
+    "audit_norm_accumulation_dtype": "float64",
+    "unchanged_update_tolerance": 1e-07,
+    "records_sha256": "ccd88c6f51fa94df8c5d8efeee25de32d9c9e9b2b813dbb8b1cf39753d43f150",
+    "accounting_sha256": "da2eaf6d8a9c7f3e4878da188eeb62cc07a6a954f02cd292a60203759e5bec35"
+  },
+  "all_30": {
+    "zero": {
+      "attempts": 3000,
+      "reconstructed": 2997,
+      "strict": 1891,
+      "scored": 1891,
+      "score_failures": 0,
+      "valid_new": 1344,
+      "cnn_success": 634,
+      "vina_success": 765,
+      "dual_success": 360,
+      "missing_geometry": 187,
+      "valid_new_rate": 0.448,
+      "cnn_success_rate": 0.21133333333333335,
+      "vina_success_rate": 0.255,
+      "dual_success_rate": 0.12
+    },
+    "cnn_local_geometry_guard": {
+      "attempts": 3000,
+      "reconstructed": 2976,
+      "strict": 1871,
+      "scored": 1871,
+      "score_failures": 0,
+      "valid_new": 1346,
+      "cnn_success": 908,
+      "vina_success": 780,
+      "dual_success": 492,
+      "missing_geometry": 233,
+      "valid_new_rate": 0.44866666666666666,
+      "cnn_success_rate": 0.30266666666666664,
+      "vina_success_rate": 0.26,
+      "dual_success_rate": 0.164
+    },
+    "cnn_geometry_weight_0p3": {
+      "attempts": 3000,
+      "reconstructed": 2971,
+      "strict": 1869,
+      "scored": 1869,
+      "score_failures": 0,
+      "valid_new": 1348,
+      "cnn_success": 909,
+      "vina_success": 780,
+      "dual_success": 494,
+      "missing_geometry": 235,
+      "valid_new_rate": 0.4493333333333333,
+      "cnn_success_rate": 0.303,
+      "vina_success_rate": 0.26,
+      "dual_success_rate": 0.16466666666666666
+    },
+    "cnn_geometry_projected": {
+      "attempts": 3000,
+      "reconstructed": 2975,
+      "strict": 1870,
+      "scored": 1870,
+      "score_failures": 0,
+      "valid_new": 1349,
+      "cnn_success": 910,
+      "vina_success": 780,
+      "dual_success": 495,
+      "missing_geometry": 233,
+      "valid_new_rate": 0.44966666666666666,
+      "cnn_success_rate": 0.30333333333333334,
+      "vina_success_rate": 0.26,
+      "dual_success_rate": 0.165
+    }
+  },
+  "selection": {
+    "selected_arm": "cnn_geometry_projected",
+    "rule": "Valid-new >= B; strictly more valid-new CNN improvements; maximize count, then lexicographic arm.",
+    "inputs": {
+      "zero": {
+        "attempts": 3000,
+        "valid_new": 1344,
+        "cnn_success": 634
+      },
+      "cnn_local_geometry_guard": {
+        "attempts": 3000,
+        "valid_new": 1346,
+        "cnn_success": 908
+      },
+      "cnn_geometry_weight_0p3": {
+        "attempts": 3000,
+        "valid_new": 1348,
+        "cnn_success": 909
+      },
+      "cnn_geometry_projected": {
+        "attempts": 3000,
+        "valid_new": 1349,
+        "cnn_success": 910
+      }
+    },
+    "eligible": [
+      "cnn_geometry_projected",
+      "cnn_geometry_weight_0p3"
+    ],
+    "uses_external_score": false
+  },
+  "metric_definition": "Strict new design and complete 22-check geometry pass, Vina lower AND CNN affinity higher than case reference, divided by all attempts.",
+  "technical_checks": [
+    {
+      "file": "cpu_checks.json",
+      "sha256": "1d811c3adf8c075ecd4fee8b29eb0050ff5ec040d81676c5a29372bf47a9ab0c",
+      "passed": true,
+      "completed_utc": "2026-10-24T05:53:11.834265+00:00",
+      "technical_outputs": 0,
+      "baseline_equation_steps": 0
+    },
+    {
+      "file": "gpu0/checks.json",
+      "sha256": "86a3365947e998c694f59fa898ecf84dc7bf65827eeb74ed724534038135e494",
+      "passed": true,
+      "completed_utc": "2026-10-24T06:01:05.712507+00:00",
+      "technical_outputs": 20,
+      "baseline_equation_steps": 3500
+    },
+    {
+      "file": "gpu1/checks.json",
+      "sha256": "f82ae5df46158b3ffea6bf902aca5906beb0ee5e4b5cb50499dc199153443b0c",
+      "passed": true,
+      "completed_utc": "2026-10-24T06:00:56.446442+00:00",
+      "technical_outputs": 20,
+      "baseline_equation_steps": 3500
+    }
+  ],
+  "source_files_sha256": {
+    "manifest.json": "64e9bb3bef7a1a3e6dde6ad00541fe9c7aa14cec20fce7647935008e8b316305",
+    "audit.json": "eddc16be2e7545e634ec753fa5005a0ba91dc61582902b1194b41c03108b97b5",
+    "accounting.json": "da2eaf6d8a9c7f3e4878da188eeb62cc07a6a954f02cd292a60203759e5bec35",
+    "selection.json": "24cc3123272dab248f0326d7f1c3a8bbac491ac828f50006eefd88e27c742a98"
+  },
+  "environments_captured_utc": "2026-10-25T14:16:17.428204+00:00",
+  "export_checks": {
+    "checked_utc": "2026-10-25T14:25:54.829311+00:00",
+    "existing_benchmark_unit_tests": {
+      "passed": 9,
+      "failed": 0
+    },
+    "python_syntax_files": 83,
+    "local_documentation_links_checked": 28,
+    "historical_guidance_scripts_verified": 47,
+    "original_benchmark_code_and_configs_unchanged": true,
+    "model_list_count": 13,
+    "generation_or_scoring_rerun": false,
+    "fresh_environment_install_tested": false
+  }
+}

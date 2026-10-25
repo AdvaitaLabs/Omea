@@ -77,3 +77,7 @@ python -m compileall -q benchmark.py scripts tests
 python -m unittest discover -s tests -v
 python benchmark.py validate
 ```
+
+## CNN 引导实验
+
+`guidance/` 保留周报版本的历史实验脚本，使用单独的生成和梯度环境，环境版本、源码来源、前序输入及路径要求见 [引导优化说明](guidance.md)。上面的 `benchmark.py` 安装命令只适用于原 13 模型 benchmark，不会自动准备引导实验的历史输入。

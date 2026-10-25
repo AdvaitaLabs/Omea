@@ -32,3 +32,16 @@ __pycache__/
 .env.*
 *.pem
 *.key
+
+# Guidance experiment runtime files
+/guidance/data/
+/guidance/checkpoints/
+/guidance/downloads/
+/guidance/vendor/
+/guidance/tools/
+/guidance/logs/
+/guidance/envs/
+/guidance/results/*
+!/guidance/results/selection_rules_v3/
+/guidance/results/selection_rules_v3/*
+!/guidance/results/selection_rules_v3/geometry_schema.json

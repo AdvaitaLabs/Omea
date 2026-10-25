@@ -1,0 +1,135 @@
+{
+  "runtime_root": "guidance/ or the original experimental workspace",
+  "repositories": [
+    {
+      "name": "AutoFragDiff",
+      "url": "https://github.com/keiserlab/autofragdiff.git",
+      "commit": "84f0885cb12e6ac4abc7558870f8d304c78c8a38",
+      "runtime_path": "vendor/AutoFragDiff"
+    },
+    {
+      "name": "gnina-torch-guidance",
+      "url": "https://github.com/RMeli/gnina-torch.git",
+      "commit": "5196d00ec78738428313a1af9a11bf73c550edd3",
+      "runtime_path": "vendor/gnina-torch-guidance"
+    }
+  ],
+  "assets": [
+    {
+      "runtime_path": "checkpoints/autofragdiff_pocket-gvp.ckpt",
+      "sha256": "926dd871aa48879e4b77b378e42a5089d5f6803451807f1064704e69e05f9dd9",
+      "bytes": 26337330
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/crossdock_default2018.pt",
+      "sha256": "56990c0a31a7aa0a57c5445de64c3d59002bc23de9947a8d028548d89ca803b4",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/crossdock_default2018_1.pt",
+      "sha256": "b4613eb9085125973951f614ecd86b6fe74d2f3d15244ae9b3cfed06ccca0841",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/crossdock_default2018_2.pt",
+      "sha256": "cd581bedc21952000612a439ea24a033090450033174cefccb770a8d8aaf3043",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/crossdock_default2018_3.pt",
+      "sha256": "1c19fc36cf8e55bc9a758203845cdd4b70b7a576cbf324bad95a760c2001a691",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/crossdock_default2018_4.pt",
+      "sha256": "b8e18e86cf500256e01d75fcb845f6322af4ddfe482e79fcdd444659e67b4010",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/default2017.pt",
+      "sha256": "38892bc0dce861508594b36d2e1537c31a8f46dbef6ba96d81588bce5ed21a47",
+      "bytes": 1561051
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/dense.pt",
+      "sha256": "76bd4a930b9133be5a4eb41b6024df3cc313174998d6a6080877118bc3e7d8c4",
+      "bytes": 2783499
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/dense_1.pt",
+      "sha256": "89059c61d9d1a73d0e1deaf2b0094b897a7e12a52a0f771bdcbee41e3089c5a8",
+      "bytes": 2783499
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/dense_2.pt",
+      "sha256": "ae2d1880d55bd24eeabecbcdab6767663600fc29bc146dfab30b82cee56683a5",
+      "bytes": 2783499
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/dense_3.pt",
+      "sha256": "9091582c40f07e842222a639434987e66492c6875b9366c92e6fb3c3d389c318",
+      "bytes": 2783499
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/dense_4.pt",
+      "sha256": "93560bad671c65e7fa3abf32266e91c7bc312e15ecdb85d578c926b25b006d81",
+      "bytes": 2783499
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/general_default2018.pt",
+      "sha256": "762072015181074114c9234b9389d6bef45907e2734651704adfa0c0b6d1095a",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/general_default2018_1.pt",
+      "sha256": "38a75047630fabe4d08f9d88c0f8ee8e9b06d25b8735d9e99f1b7a955cf5bd09",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/general_default2018_2.pt",
+      "sha256": "2723f05e57b9c9b7b84e2a9a3261cdbb57ad1bd6106b4d0b9700041e35d46a87",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/general_default2018_3.pt",
+      "sha256": "e57a2b210bc0070dcb8f5475dae5e3ccaa7491f568a57816bda5db80e362e816",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/general_default2018_4.pt",
+      "sha256": "a6ae8381c6f679c6de1f60c1d093aba0a177dd2d142f213dc024beed4bca2df0",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/redock_default2018.pt",
+      "sha256": "1263472435239c111125bf26d790d849004c218f29cf43a7675f543a519697ae",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/redock_default2018_1.pt",
+      "sha256": "0554f4a580fce2dc8abd9683a3451a886d1de363b2159208996229086689b57b",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/redock_default2018_2.pt",
+      "sha256": "df9d51abf6af21b9ebad9ed70ea836b699ac33c3225ec2f0c930230e2c647944",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/redock_default2018_3.pt",
+      "sha256": "bef1a9c2385ccc021339c6f0b7c96aa3ea003a010ba8480fa8b38bc8204fedee",
+      "bytes": 1558223
+    },
+    {
+      "runtime_path": "vendor/gnina-torch-guidance/gninatorch/weights/redock_default2018_4.pt",
+      "sha256": "12350ca9d8e1c4bab9605a0ab85f7a055be2522ff97fa33b016ae98d7f031ba8",
+      "bytes": 1558223
+    }
+  ],
+  "gnina": {
+    "version": "1.1",
+    "sha256": "cd5f12d88f63bef2f637ef183beb24f1620ba97944d88173b76fbd373e46d84f",
+    "original_path": "/root/autodl-tmp/rgroup-judge-benchmark/bin/gnina-1.1"
+  },
+  "note": "源码和权重分开获取；这些记录不自动并入 benchmark.py 的 13 模型安装流程。"
+}

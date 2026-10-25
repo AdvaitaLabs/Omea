@@ -1,0 +1,288 @@
+{
+  "version": "cnn_geometry_followup_scale30_v1",
+  "source_manifest_sha256": "64e9bb3bef7a1a3e6dde6ad00541fe9c7aa14cec20fce7647935008e8b316305",
+  "evaluation_manifest_sha256": "3089b78c20533006e4be8f8d7f372c74bb419e532b10550ccb40cc2ae9d40282",
+  "frozen_scripts_sha256": {
+    "run_direct_guidance_experiment.py": "aa2f03589c2a49fd2e20a59fd80b9695476ec464638c44ab1195e2c2f467516e",
+    "autofragdiff_direct_hook.py": "5058f06859ff50b871a48899ac678d3ac4616659a2513c51ea6b7285398da090",
+    "check_direct_guidance.py": "17beb90f569a92d2dcda3d3d1387eb9150b7d0ec0b8018558dcae054a376e6e1",
+    "gnina_soft_element_guidance.py": "0a8eb8553099f63e57bb2a186a868599cbbd5ceb0e66383d788aae16a3d1b529",
+    "gnina_soft_element_client.py": "116ab604ae4cd6c7fabc8f8c9e91fa675c7423d63606b757f7643e212e0326d7",
+    "gnina_soft_element_worker.py": "b741b13dbeff69e16add305d4813649d18f4ef2c9582fc037a82900df749c877",
+    "check_soft_element_encoding_v2.py": "d784a4cffa78a83ccc20fd1225a1d6f38198e3270138aeca6842e07432fba201",
+    "evaluate_direct_guidance.py": "80e8418335bbb08ecb80af903d67e2899ba2fe7123f60f470843e3c057cf9437",
+    "autofragdiff_strength_hook.py": "b4ea45a905ce4a181d9dbfab58fa52c1f633014ff6c29bd321512a9639fb4ad1",
+    "autofragdiff_local_regeneration.py": "982f98e84c35f11efc9fb21596f8fa2f4da2d2d81da279b1d39b2ef95872de30",
+    "local_regeneration_graph.py": "5761bc25a6f0faa29f97c47e18484e998a357caab86ddad4b7b0115b166de522",
+    "element_guidance_objective.py": "b25ae1208075a6705c8e4d423d362db072b5f0dcea0989b3a0f10ca934253689",
+    "element_physics_guard.py": "51eca9b80419e0a7a88c23adc339e9884956b4fb5e23822810e0ec4b32d1ccef",
+    "fixed_core_reconstruction.py": "17023aba6de6c1a7c66486290d76fb6502fd47fce2fe918d63c21e59c43a6235",
+    "gnina_gradient_client.py": "0adbb31607641c3f88f7363e33382412a80f70222d92617369f0022635f6ba3d",
+    "gnina_gradient_worker.py": "ad8ca627679c0a1438f06e9c5c1ffad87ed0d0ccf00964b9e35ac3894ab1b7b8",
+    "gnina_element_client.py": "cb326811cdd997659d5f86fb074f77f91a36cd78a8153ead2b176821bec43bf8",
+    "gnina_element_worker.py": "8a195ee2823580efce401c0dd453f9eede90f5ef2e132d1ef1e5a757b0d5d26a",
+    "gnina_guidance.py": "143d7c1661cb8f77f6939fe75942084d2ee3b466020cce6a52be6c7b70035a27",
+    "score_extra_results.py": "8c14553ed07863c2859e13b5ca176ce70ef17cf300c279e0a4d25d6b0e99c530",
+    "restore_scoring_serialization.py": "74958b0d6e3a3e928df18a1e1a8073158e29e5a63353febdfd50e51cfdc591d3",
+    "tasks.py": "6716e8660da7d8a20197b0e6dcc4d3770b5cb6931d1ebb912fd4b4047d9b63ff",
+    "reanalyze_geometry_stereo.py": "a4c2ea6162cbb77468a5dd140d861836f03cd8e9a5286824d4f9b32e60a32bb2",
+    "run_direct_guidance_parameter_screen.py": "dcbb194226c3440dd8a023f41fc29f5537de35386324b84b16b99d0f8f957ee5",
+    "run_direct_guidance_parameter_screen_10case.py": "8694b3c96a51371ebfc3c3be71c59647e381c430da8db4e6e3f7e69feb4273e8",
+    "run_selected_guidance_full.py": "5a0adf17d8e5547d31473e8c6010a33ac2c57efe8e58699cf0a5f4071a062683",
+    "summarize_selected_guidance_full.py": "c9899a65d9b65329d7c9f8bc7e1e70064382f23b4bfd414a8230384f1c0fd8aa",
+    "resume_selected_guidance_full_case_shards.py": "ef14b28a5c5a50b4caf2ca9f9e68f4c17198333ad442cdb6c788ab0b812dd716",
+    "diagnose_selected_guidance_replay.py": "188239dfabaca57778baa7d1e8547602dd5faa14b60b6af434bb60ae84b78108",
+    "finalize_selected_guidance_full.py": "88106150d5856c8050a91c329546dc58288831e15411c65797ec7ce492a2e6ca",
+    "cnn_clean_settings.py": "58b583a8909b2457f9d04ce60f3d8948d37c218242e6af344ec978c9c06fa531",
+    "cnn_local_geometry.py": "c6b897c1a4d6d48ef921d115fa11e36381d554d9fe84a427ffe5b8c2b5b3cc1b",
+    "autofragdiff_cnn_clean_hook.py": "e31c417db4d64a61214dcf0a13a04289802f48617a605172f1eb293925e01dad",
+    "score_cnn_clean.py": "b5cdd3e6061a5400b0c4298ebcdf47c558dab9a9bcbdc6bdd75b5bceaee896a5",
+    "summarize_cnn_clean_full.py": "9050a18b4c6edac7268ef74f19b18eefe9ca5e46c176b5f785fd89e7bdeb1916",
+    "check_cnn_clean_ablations.py": "4fd06be54053a68aef34729821625b1c46bb5c0e8a8166c257a5c52b7f45cd59",
+    "run_cnn_clean_ablations.py": "c77f2dcd42a572da0e77dc773cc1497daf4b8c997ec8eadf4005c40563011b42",
+    "check_cnn_clean_recovery.py": "9d3440a4c36439bc9f2097a45b0d3a1f43a06fdef242fe222d42c94a66ae8a96",
+    "finalize_cnn_clean_full.py": "8ef1eb1ff871913841c0284d161656d1e6e26a3e839fb90d28e06d682fc0cd79",
+    "cnn_geometry_followup_settings.py": "c01c3efc5242502c61e056d66a6efd9fdd3be21012e5b13c5925e1de3f90255d",
+    "cnn_geometry_projection.py": "8129c2b9df5cf2debc2a6454729dc4832986ed3b38dd7448d435545557ac24de",
+    "autofragdiff_cnn_geometry_hook.py": "f896850b296f66fbe585dfdf029f25c5c1e02dc03b1311bb3c58c03f4e23ab8d",
+    "check_cnn_geometry_followup.py": "1873940517fa62bf348d84ff30c3428b4a846eec992bcdccdc4d788d159ee021",
+    "summarize_cnn_geometry_followup.py": "3c4ccdfd54d0fb8afd3d5fb71ea93449277ebe44297263bfe7a68515de2fca7d",
+    "run_cnn_geometry_followup.py": "1e9df9f5aab4e30af11d32ebea2ff6fd84ed5b7fe131154206fdd1f7445ac17d"
+  },
+  "separately_frozen_scripts_sha256": {
+    "evaluate_cnn_clean_dual.py": "190ba82428d39681ed4356f944ca9a763902455481885134c30d0ec595e86aba"
+  },
+  "supporting_scripts_sha256": {
+    "score_results.py": "46c3802d10ffd482774b86d3599edee20ab006bfec15be0393e9f9d9fefb644a"
+  },
+  "supporting_note": "基础评分模块是旧有导入依赖；记录本次哈希，不声称它在上述历史清单中冻结过。",
+  "geometry_schema_sha256": "53900b1b39e5a67cbbc6ff20cf3db3cfc4ecadbc631e582cfe517fa2cb7ba3ad",
+  "configuration_sha256": "06f04071fe44f632c58519cd3238909892422a2998f9b4f0ecad84ae95cbe408",
+  "local_imports": {
+    "autofragdiff_cnn_clean_hook.py": [
+      "autofragdiff_direct_hook",
+      "autofragdiff_local_regeneration",
+      "autofragdiff_strength_hook",
+      "cnn_clean_settings",
+      "cnn_local_geometry",
+      "fixed_core_reconstruction",
+      "gnina_soft_element_client",
+      "run_direct_guidance_parameter_screen_10case"
+    ],
+    "autofragdiff_cnn_geometry_hook.py": [
+      "autofragdiff_direct_hook",
+      "autofragdiff_local_regeneration",
+      "autofragdiff_strength_hook",
+      "cnn_clean_settings",
+      "cnn_geometry_projection",
+      "cnn_local_geometry",
+      "fixed_core_reconstruction",
+      "gnina_soft_element_client",
+      "run_direct_guidance_parameter_screen_10case"
+    ],
+    "autofragdiff_direct_hook.py": [
+      "autofragdiff_local_regeneration",
+      "autofragdiff_strength_hook",
+      "fixed_core_reconstruction",
+      "gnina_soft_element_client"
+    ],
+    "autofragdiff_local_regeneration.py": [
+      "fixed_core_reconstruction",
+      "reanalyze_geometry_stereo",
+      "tasks"
+    ],
+    "autofragdiff_strength_hook.py": [
+      "autofragdiff_local_regeneration",
+      "element_guidance_objective",
+      "element_physics_guard",
+      "fixed_core_reconstruction",
+      "gnina_element_client",
+      "gnina_gradient_client",
+      "reanalyze_geometry_stereo",
+      "tasks"
+    ],
+    "check_cnn_clean_ablations.py": [
+      "autofragdiff_cnn_clean_hook",
+      "autofragdiff_direct_hook",
+      "cnn_clean_settings",
+      "cnn_local_geometry",
+      "resume_selected_guidance_full_case_shards",
+      "score_cnn_clean",
+      "tasks"
+    ],
+    "check_cnn_clean_recovery.py": [
+      "autofragdiff_cnn_clean_hook",
+      "autofragdiff_direct_hook",
+      "cnn_clean_settings",
+      "cnn_local_geometry",
+      "resume_selected_guidance_full_case_shards",
+      "score_cnn_clean",
+      "tasks"
+    ],
+    "check_cnn_geometry_followup.py": [
+      "autofragdiff_cnn_clean_hook",
+      "autofragdiff_cnn_geometry_hook",
+      "autofragdiff_strength_hook",
+      "cnn_geometry_followup_settings",
+      "cnn_geometry_projection",
+      "resume_selected_guidance_full_case_shards",
+      "score_cnn_clean",
+      "score_extra_results",
+      "summarize_cnn_geometry_followup",
+      "tasks"
+    ],
+    "check_direct_guidance.py": [
+      "autofragdiff_direct_hook",
+      "run_direct_guidance_experiment",
+      "tasks"
+    ],
+    "check_soft_element_encoding_v2.py": [
+      "gnina_soft_element_guidance"
+    ],
+    "cnn_clean_settings.py": [],
+    "cnn_geometry_followup_settings.py": [
+      "cnn_clean_settings"
+    ],
+    "cnn_geometry_projection.py": [
+      "cnn_local_geometry"
+    ],
+    "cnn_local_geometry.py": [],
+    "diagnose_selected_guidance_replay.py": [
+      "run_selected_guidance_full"
+    ],
+    "element_guidance_objective.py": [],
+    "element_physics_guard.py": [
+      "element_guidance_objective",
+      "fixed_core_reconstruction"
+    ],
+    "evaluate_cnn_clean_dual.py": [],
+    "evaluate_direct_guidance.py": [
+      "local_regeneration_graph",
+      "score_extra_results",
+      "tasks"
+    ],
+    "finalize_cnn_clean_full.py": [
+      "run_cnn_clean_ablations"
+    ],
+    "finalize_selected_guidance_full.py": [
+      "resume_selected_guidance_full_case_shards"
+    ],
+    "fixed_core_reconstruction.py": [],
+    "gnina_element_client.py": [
+      "gnina_gradient_client"
+    ],
+    "gnina_element_worker.py": [
+      "gnina_guidance"
+    ],
+    "gnina_gradient_client.py": [],
+    "gnina_gradient_worker.py": [
+      "gnina_guidance"
+    ],
+    "gnina_guidance.py": [],
+    "gnina_soft_element_client.py": [
+      "gnina_gradient_client"
+    ],
+    "gnina_soft_element_guidance.py": [
+      "gnina_guidance"
+    ],
+    "gnina_soft_element_worker.py": [
+      "gnina_soft_element_guidance"
+    ],
+    "local_regeneration_graph.py": [],
+    "reanalyze_geometry_stereo.py": [
+      "score_results",
+      "tasks"
+    ],
+    "restore_scoring_serialization.py": [
+      "reanalyze_geometry_stereo",
+      "tasks"
+    ],
+    "resume_selected_guidance_full_case_shards.py": [
+      "evaluate_direct_guidance",
+      "run_direct_guidance_parameter_screen_10case",
+      "score_extra_results",
+      "summarize_selected_guidance_full",
+      "tasks"
+    ],
+    "run_cnn_clean_ablations.py": [
+      "autofragdiff_cnn_clean_hook",
+      "cnn_clean_settings",
+      "resume_selected_guidance_full_case_shards",
+      "score_cnn_clean",
+      "summarize_cnn_clean_full",
+      "tasks"
+    ],
+    "run_cnn_geometry_followup.py": [
+      "autofragdiff_cnn_geometry_hook",
+      "cnn_clean_settings",
+      "cnn_geometry_followup_settings",
+      "resume_selected_guidance_full_case_shards",
+      "run_cnn_clean_ablations",
+      "score_cnn_clean",
+      "score_extra_results",
+      "summarize_cnn_geometry_followup",
+      "tasks"
+    ],
+    "run_direct_guidance_experiment.py": [
+      "autofragdiff_direct_hook",
+      "evaluate_direct_guidance",
+      "local_regeneration_graph",
+      "tasks"
+    ],
+    "run_direct_guidance_parameter_screen.py": [
+      "autofragdiff_direct_hook",
+      "autofragdiff_local_regeneration",
+      "autofragdiff_strength_hook",
+      "evaluate_direct_guidance",
+      "reanalyze_geometry_stereo",
+      "run_direct_guidance_experiment",
+      "score_extra_results",
+      "tasks"
+    ],
+    "run_direct_guidance_parameter_screen_10case.py": [
+      "autofragdiff_direct_hook",
+      "autofragdiff_local_regeneration",
+      "autofragdiff_strength_hook",
+      "evaluate_direct_guidance",
+      "reanalyze_geometry_stereo",
+      "run_direct_guidance_experiment",
+      "score_extra_results",
+      "tasks"
+    ],
+    "run_selected_guidance_full.py": [
+      "evaluate_direct_guidance",
+      "run_direct_guidance_parameter_screen_10case",
+      "score_extra_results",
+      "summarize_selected_guidance_full",
+      "tasks"
+    ],
+    "score_cnn_clean.py": [
+      "score_extra_results",
+      "tasks"
+    ],
+    "score_extra_results.py": [
+      "reanalyze_geometry_stereo",
+      "restore_scoring_serialization",
+      "tasks"
+    ],
+    "score_results.py": [
+      "tasks"
+    ],
+    "summarize_cnn_clean_full.py": [
+      "cnn_clean_settings",
+      "score_cnn_clean"
+    ],
+    "summarize_cnn_geometry_followup.py": [
+      "cnn_geometry_followup_settings",
+      "score_cnn_clean"
+    ],
+    "summarize_selected_guidance_full.py": [],
+    "tasks.py": []
+  },
+  "excluded_scripts": [
+    "evaluate_core_preserved_full.py",
+    "repair_core_preserved_precision_v2.py",
+    "verify_core_preserved_results.py",
+    "analyze_cnn_geometry_followup.py"
+  ]
+}
