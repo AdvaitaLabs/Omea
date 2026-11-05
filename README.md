@@ -1,96 +1,96 @@
 # R-group design benchmark
 
-比较 13 个分子生成方法在蛋白口袋中的单连接位点 R 基替换能力：保留其余原子的结构和坐标，只重新生成指定位置的一个 R 基。模型使用官方预训练权重，统一检查结构约束、几何质量和相对原配体的代理分数。
+Compare 13 molecular generation methods on single-attachment-site R-group replacement within protein pockets: preserve the structure and coordinates of all remaining atoms and regenerate only one R-group at a specified site. Models use official pretrained weights and are evaluated consistently for structural constraints, geometric quality, and proxy scores relative to the original ligand.
 
-本任务参考 DiffSBDD 的骨架保持设计思路，是严格单连接位点的扩展任务。它不是论文原始实验的逐项复现，也不把代理分数当作真实 ΔΔG。
+This task draws on DiffSBDD's scaffold-preserving design approach and extends it to a strict single-attachment-site setting. It is not a point-by-point reproduction of the paper's original experiments, and proxy scores are not treated as true ΔΔG values.
 
-同时收录 AutoFragDiff 的 CNN 坐标与元素联合引导、局部几何约束和坐标更新投影，实现范围截至 2026-10-25 周报所用的原生最终重建版本。
+The repository also includes joint CNN guidance of coordinates and element features, local geometry constraints, and coordinate-update projection for AutoFragDiff. The implementation scope ends at the version using native final reconstruction reported in the 2026-10-25 weekly report.
 
-## 测试设置
+## Benchmark setup
 
-- 固定 45 个案例，每个案例每个方法 **100 次原始生成**。案例是蛋白结构、原配体和一个指定替换位点的组合。
-- 主表使用共同的 30 个多原子 R 基案例，覆盖 7 个靶标组。另有单原子 R 基案例；全部案例也单独汇总。案例列表在 `cohorts/single_site_45.json`。
-- 保持核心的元素、形式电荷、芳香性、内部键、立体化学和蛋白坐标系中的位置；只允许在指定核心原子处连接一个 SINGLE 键。R 基重原子数与原被删除部分相同。
-- 失败、尺寸错误和重复分子都计入原始尝试数，不补生成、不做 best-of-K。唯一分子数另外报告。
-- 输入生成器的是蛋白、保留核心、连接位点和 R 基原子数。原 R 基的元素、键、坐标和评分不会传给生成器。
+- A fixed set of 45 cases, with **100 raw generation attempts** per method per case. Each case combines a protein structure, an original ligand, and a specified replacement site.
+- The main comparison uses a shared set of 30 multi-atom R-group cases spanning 7 target groups. Single-atom R-group cases are also included, and results across all cases are summarized separately. The case list is in `cohorts/single_site_45.json`.
+- Preserve the core's elements, formal charges, aromaticity, internal bonds, stereochemistry, and positions in the protein coordinate frame. Only one SINGLE bond may be attached at the specified core atom. The R-group must contain the same number of heavy atoms as the removed fragment.
+- Failures, incorrect sizes, and duplicate molecules all count toward the raw attempt budget. There are no replacement attempts or best-of-K selection. Unique molecule counts are reported separately.
+- The generator receives the protein, retained core, attachment site, and R-group atom count. The original R-group's elements, bonds, coordinates, and scores are not provided to the generator.
 
-完整定义在 [configs/protocol.json](configs/protocol.json)。公开数据的训练重叠尚未排除，因此不能把结果称为严格独立测试集上的排名。
+The full protocol is defined in [configs/protocol.json](configs/protocol.json). Overlap with training data in the public datasets has not yet been ruled out, so these results cannot be described as a ranking on a strictly independent test set.
 
-## 指标
+## Metrics
 
-| 指标 | 含义 |
+| Metric | Definition |
 |---|---|
-| Strict success | 化学结构可解析，且核心、连接位点、连通性、原子数和位置都满足约束 |
-| Valid new | Strict success，加上完整 PoseBusters 几何检查通过、评分成功，并且与原配体的化学结构不同 |
-| Vina | 原生成构象的 Vina 打分，越低越好，单位 kcal/mol；不重新对接 |
-| GNINA CNNaffinity | 原生成构象的神经网络亲和力预测，越高越好，输出尺度为 pK |
-| Dual improvement | Valid new，且 Vina 比原配体低、CNNaffinity 比原配体高 |
+| Strict success | The chemical structure can be parsed, and all constraints on the core, attachment site, connectivity, atom count, and positions are satisfied |
+| Valid new | Strict success, plus passing the full PoseBusters geometry checks, successful scoring, and a chemical structure different from the original ligand |
+| Vina | Vina score of the generated pose, in kcal/mol; lower is better. No redocking is performed |
+| GNINA CNNaffinity | Neural network affinity prediction for the generated pose, on a pK scale; higher is better |
+| Dual improvement | Valid new, with a lower Vina score and a higher CNNaffinity score than the original ligand |
 
-成功率的分母是全部原始尝试。PoseBusters 缺失检查也不能记为通过。所有方法及原配体使用相同的加氢、仅氢原子优化和 CPU GNINA 1.1 评分。核心 RMSD 上限 0.1 Å，单原子最大位移上限 0.3 Å。
+Success rates use all raw attempts as the denominator. Missing PoseBusters checks do not count as passes. All methods and original ligands use the same hydrogen addition, hydrogen-only optimization, and CPU GNINA 1.1 scoring procedure. The maximum core RMSD is 0.1 Å, and the maximum displacement of any individual atom is 0.3 Å.
 
-同时报告每个案例及靶标等权结果，避免一个靶标的案例多就主导总分。Vina 和 GNINA 是快速代理，不能直接解释成实验亲和力改善或自由能 ΔΔG。本仓库不运行 OpenFE。
+Results are also reported with equal weighting by case and by target, so targets with more cases do not dominate the overall score. Vina and GNINA are fast proxies and cannot be directly interpreted as improvements in experimental affinity or free-energy ΔΔG. This repository does not run OpenFE.
 
-## AutoFragDiff 引导优化
+## AutoFragDiff guidance optimization
 
-生成时只使用 GNINA CNNaffinity 引导坐标和元素特征，末期加入局部几何约束。Vina 在方案冻结后用于评估，不参与这一轮的引导或方案选择。每组使用相同的 30 个案例、每案例 100 次尝试，失败保留在分母中。
+During generation, only GNINA CNNaffinity is used to guide coordinates and element features, with local geometry constraints added in the late stages. Vina is used for evaluation after the configurations are frozen; it is not used for guidance or configuration selection in this round. Each configuration uses the same 30 cases with 100 attempts per case, and failures remain in the denominator.
 
-| 方案 | 双指标改善次数 | 双指标改善率 |
+| Configuration | Dual improvement count | Dual improvement rate |
 |---|---:|---:|
-| 不使用评分引导 | 360 / 3000 | 12.00% |
-| 评分引导加局部几何约束 | 492 / 3000 | 16.40% |
-| 加强局部几何约束 | 494 / 3000 | 16.47% |
-| 限制使局部几何变差的坐标更新 | 495 / 3000 | **16.50%** |
+| No score guidance | 360 / 3000 | 12.00% |
+| Score guidance with local geometry constraints | 492 / 3000 | 16.40% |
+| Stronger local geometry constraints | 494 / 3000 | 16.47% |
+| Restrict coordinate updates that worsen local geometry | 495 / 3000 | **16.50%** |
 
-这些是原开发集实验的已核算结果，不是通过本发布目录重新运行得到的独立测试成绩。最终输出仍使用原生重建；后续的最终核心保持实验不在本版范围内。主要实现、参数及运行依赖见 [引导优化说明](docs/guidance.md)，来源核对见 [验收摘要](docs/guidance_validation.json)。
+These are verified results from the original development-set experiments, not independent test results obtained by rerunning this release. Final outputs still use native reconstruction; subsequent experiments on preserving the core in the final output are outside the scope of this version. See the [guidance optimization notes](docs/guidance.md) for the main implementation, parameters, and runtime dependencies, and the [validation summary](docs/guidance_validation.json) for source verification.
 
-## 目录
+## Repository layout
 
 ```text
-benchmark.py       统一命令入口
-scripts/           数据准备、13 个方法的适配器、生成、评分和汇总
-guidance/          CNN 联合引导、局部几何约束及周报版本的实验脚本
-configs/           测试规则、方法信息、官方资源及权重 SHA256
-cohorts/           固定测试案例与官方 MOAD split
-requirements/      依赖文件与实际运行环境的版本记录
-patches/           在固定上游版本上使用的兼容补丁
-licenses/          上游许可证原文
-tests/             核心约束、固定预算、保存和评测规则的检查
-docs/              安装、方法适配说明和已知问题
+benchmark.py       Unified command entry point
+scripts/           Data preparation, adapters for 13 methods, generation, scoring, and aggregation
+guidance/          Joint CNN guidance, local geometry constraints, and experiment scripts from the weekly report
+configs/           Benchmark rules, method metadata, official resources, and weight SHA256 checksums
+cohorts/           Fixed benchmark cases and the official MOAD split
+requirements/      Dependency files and version records from the actual runtime environments
+patches/           Compatibility patches for pinned upstream versions
+licenses/          Original upstream license texts
+tests/             Checks for core constraints, fixed budgets, persistence, and evaluation rules
+docs/              Installation, method adaptation notes, and known issues
 ```
 
-蛋白结构、权重、第三方完整仓库及逐次生成结果没有放入发布目录。引导部分保留对应版本的代码、参数和统计摘要；运行时下载的资源及输出由 `.gitignore` 排除。
+Protein structures, weights, complete third-party repositories, and per-attempt generation results are not included in the release directory. The guidance component retains the corresponding version's code, parameters, and statistical summaries; resources downloaded at runtime and generated outputs are excluded by `.gitignore`.
 
-## 使用
+## Usage
 
-先按 [安装说明](docs/installation.md) 建立 CPU 评测环境和所选模型的生成环境。不同模型需要不同的 Lightning/PyTorch 版本，不建议把它们全部装进一个环境。
+First, follow the [installation instructions](docs/installation.md) to set up the CPU evaluation environment and the generation environment for your selected model. Different models require different Lightning/PyTorch versions, so installing them all in a single environment is not recommended.
 
 ```bash
-# 查看 13 个方法及对应环境
+# List the 13 methods and their corresponding environments
 python benchmark.py models
 
-# 获取固定版本的上游源码与该模型权重
+# Fetch the pinned upstream source and the model's weights
 python benchmark.py setup-sources --model AutoFragDiff
 python benchmark.py assets download --model AutoFragDiff
 
-# 从公开 MOAD 和 PDB CCD 下载、准备并核对固定案例
+# Download, prepare, and verify the fixed cases using public MOAD and PDB CCD data
 python benchmark.py prepare
 python benchmark.py validate --unit-tests
 
-# 在该模型的生成环境里运行；默认每案例 100 次
+# Run in the model's generation environment; defaults to 100 attempts per case
 python benchmark.py generate --model AutoFragDiff --run benchmark_v1 --cohort primary
 
-# 在 CPU 评测环境里评分。使用 GNINA 1.1
+# Score in the CPU evaluation environment using GNINA 1.1
 python benchmark.py score --model AutoFragDiff --run benchmark_v1 --gnina /path/to/gnina-1.1
 python benchmark.py summarize --run benchmark_v1 --models AutoFragDiff
 ```
 
-上述命令显式选择 30 个共同案例，所有模型都应使用相同 `--cohort primary`。默认 `--cohort all` 是 45 个准备案例，`--cohort single_atom` 是 14 个单原子案例。FLOWR.root 的已知不支持输入 1RVX 在主比较集以外；对全 45 个案例直接运行它会提前报错，不虚构未执行的尝试数。
+The commands above explicitly select the 30 shared cases. All models should use the same `--cohort primary` setting. The default `--cohort all` includes all 45 prepared cases, while `--cohort single_atom` includes 14 single-atom cases. Input 1RVX, which FLOWR.root is known not to support, is outside the main comparison set. Running FLOWR.root directly on all 45 cases fails early rather than fabricating counts for attempts that were never executed.
 
-如果已有权重，可按 `configs/assets.json` 的路径放好，再运行 `assets verify --model ...`。如果已有完整 MOAD/CCD 缓存，用 `prepare --from-cache`；已有任务池用 `prepare --freeze-only`。
+If you already have the weights, place them at the paths specified in `configs/assets.json`, then run `assets verify --model ...`. If you have a complete MOAD/CCD cache, use `prepare --from-cache`; if you already have a task pool, use `prepare --freeze-only`.
 
-上述 `benchmark.py` 命令默认把资源和输出放在本仓库目录。也可设置 `RGROUP_BENCHMARK_ROOT=/path/to/workspace`，把数据、上游源码、工具、权重和结果放在独立工作目录；命令入口可以从任意工作目录执行。任务清单内部的相对路径以该工作目录为根。引导实验脚本沿用原实验路径，不读取这个环境变量，准备方式见 [引导优化说明](docs/guidance.md)。
+By default, the `benchmark.py` commands above store resources and outputs in this repository directory. You can instead set `RGROUP_BENCHMARK_ROOT=/path/to/workspace` to store data, upstream source, tools, weights, and results in a separate workspace. The command entry point can be invoked from any working directory. Relative paths within task manifests are resolved against that workspace root. The guidance experiment scripts retain the original experiment paths and do not read this environment variable; see the [guidance optimization notes](docs/guidance.md) for setup instructions.
 
-小规模安装检查必须显式标记，不能并入正式结果：
+Small installation checks must be explicitly marked and must not be included in official results:
 
 ```bash
 python benchmark.py generate --model AutoFragDiff --run smoke_v1 --smoke --limit 1 --attempts 2
@@ -98,14 +98,14 @@ python benchmark.py score --model AutoFragDiff --run smoke_v1 --gnina /path/to/g
 python benchmark.py summarize --run smoke_v1 --models AutoFragDiff --smoke
 ```
 
-完成的案例支持续跑；中断的案例从原种子完整重跑。输入、代码、权重或预算变化时必须换 run 名称。运行清单记录输入、代码与权重校验值，并保存原始分子的完整 RDKit 状态，SDF 仅作为导出格式。
+Runs can resume from completed cases; interrupted cases are rerun in full from their original seeds. Use a new run name whenever inputs, code, weights, or budgets change. Run manifests record checksums for inputs, code, and weights, and the full RDKit state of the raw molecules is preserved. SDF is used only as an export format.
 
-汇总输出在 `results/<run>/summary/`：`per_case.csv`、`comparison_primary_30.csv`、`comparison_all_cases.csv`、`per_target_primary.csv` 和 `summary.json`。`unique_*` 在总表里是各案例唯一数之和，不是跨口袋去重的分子总数。
+Summary outputs are written to `results/<run>/summary/`: `per_case.csv`, `comparison_primary_30.csv`, `comparison_all_cases.csv`, `per_target_primary.csv`, and `summary.json`. In the aggregate tables, `unique_*` is the sum of per-case unique counts, not the total number of molecules deduplicated across pockets.
 
-## 方法和使用范围
+## Methods and scope of use
 
-模型、文章、许可证和适配说明见 [docs/methods.md](docs/methods.md)。MolJO、DiffGui、MolPilot 和 DELETE 的实际适配形式会在配置与输出中保留标识，不作为未经修改的原生采样器宣传。
+See [docs/methods.md](docs/methods.md) for models, papers, licenses, and adaptation notes. The actual adaptations of MolJO, DiffGui, MolPilot, and DELETE remain explicitly identified in configurations and outputs; they are not presented as unmodified native samplers.
 
-13 模型 benchmark 采用新的输出布局，且修正了发布代码中已定位的 Pfizer diffusion 掩码绑定问题；对应历史表格没有随代码重新计算或发布。新增的引导结果仅作为其原实验的统计摘要保存，不能与这里的新运行合并核算；说明见 [docs/known_issues.md](docs/known_issues.md)。
+The 13-model benchmark uses a new output layout and fixes the Pfizer diffusion mask-binding issue identified in the release code. The corresponding historical tables have not been recomputed or published alongside these code changes. The newly added guidance results are retained only as statistical summaries of their original experiments and must not be combined with new runs from this release. See [docs/known_issues.md](docs/known_issues.md) for details.
 
-许可按文件范围区分：独立的 benchmark 调度、数据准备和评测代码使用 MIT；上游适配与补丁保留对应许可证，特别是 MolJO/MolPilot 的非商业限制。权重许可独立于源码许可，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+Licensing varies by file scope: independent benchmark orchestration, data preparation, and evaluation code use the MIT License; upstream adaptations and patches retain their respective licenses, particularly the noncommercial restrictions for MolJO/MolPilot. Weight licenses are separate from source-code licenses. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for details.
